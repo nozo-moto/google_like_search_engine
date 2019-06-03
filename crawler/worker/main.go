@@ -10,7 +10,9 @@ func main() {
 		Addr:     "localhost:6379",
 		Password: "password",
 	})
-
-	c := crawler.New(*redisClient)
+	c, err := crawler.New(*redisClient)
+	if err != nil {
+		panic(err)
+	}
 	c.Run()
 }

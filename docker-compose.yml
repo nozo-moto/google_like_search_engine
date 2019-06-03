@@ -8,6 +8,18 @@ services:
       - "6379:6379"
     command: redis-server --appendonly yes --requirepass password
 
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: google_like_search_engine
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+        - ./migration/:/docker-entrypoint-initdb.d
+
 
 
 
